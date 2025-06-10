@@ -5,13 +5,11 @@ class Group:
         self.token = token
         self.base_url = "https://api.pushover.net/1/groups"
 
-    def create(self, name: str, users: list[str] = None):
+    def create(self, name: str):
         data = {
             "token": self.token,
             "name": name,
         }
-        if users:
-            data["users"] = ",".join(users)
         res = requests.post(f"{self.base_url}.json", data=data)
         res.raise_for_status()
         return res.json()
@@ -31,44 +29,52 @@ class Group:
         return res.json()
 
     def list_users(self, group_key: str):
-        res = requests.get(f"{self.base_url}/{group_key}/users.json", params={"token": self.token})
+        res = requests.get(f"{self.base_url}/{group_key}.json", params={"token": self.token})
         res.raise_for_status()
         return res.json()
 
-    def add_user(self, group_key: str, user: str, device: str = None):
+    def add_user(self, group_key: str, user: str, device: str = None, memo: str = None):
         data = {
             "token": self.token,
             "user": user,
         }
         if device:
             data["device"] = device
+        if memo:
+            data["memo"] = memo
         res = requests.post(f"{self.base_url}/{group_key}/add_user.json", data=data)
         res.raise_for_status()
         return res.json()
 
-    def remove_user(self, group_key: str, user: str):
+    def remove_user(self, group_key: str, user: str, device: str = None):
         data = {
             "token": self.token,
             "user": user,
         }
-        res = requests.post(f"{self.base_url}/{group_key}/delete_user.json", data=data)
+        if device:
+            data["device"] = device
+        res = requests.post(f"{self.base_url}/{group_key}/remove_user.json", data=data)
         res.raise_for_status()
         return res.json()
 
-    def disable_user(self, group_key: str, user: str):
+    def disable_user(self, group_key: str, user: str, device: str = None):
         data = {
             "token": self.token,
             "user": user,
         }
+        if device:
+            data["device"] = device
         res = requests.post(f"{self.base_url}/{group_key}/disable_user.json", data=data)
         res.raise_for_status()
         return res.json()
 
-    def enable_user(self, group_key: str, user: str):
+    def enable_user(self, group_key: str, user: str, device: str = None):
         data = {
             "token": self.token,
             "user": user,
         }
+        if device:
+            data["device"] = device
         res = requests.post(f"{self.base_url}/{group_key}/enable_user.json", data=data)
         res.raise_for_status()
         return res.json()
