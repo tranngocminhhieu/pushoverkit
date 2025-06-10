@@ -7,7 +7,7 @@ setup(
     install_requires=["requests"],
     entry_points={
         "console_scripts": [
-            "pushoverkit = pushoverkit.cli:main"
+            "pushoverkit=pushoverkit.cli.main:main"
         ]
     },
 )
