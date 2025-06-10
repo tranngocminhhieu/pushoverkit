@@ -1,7 +1,7 @@
 from pushoverkit.groups import Groups
 
 def setup_group_cli(subparsers):
-    parser = subparsers.add_parser("group", help="Manage groups")
+    parser = subparsers.add_parser("groups", help="Manage groups")
     group_subparsers = parser.add_subparsers(dest="group_command", required=True)
 
     # create
