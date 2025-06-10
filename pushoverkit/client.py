@@ -1,11 +1,14 @@
 import requests
 from .groups import Groups
+from .teams import Teams
+
 
 class Pushover:
     def __init__(self, token: str, default_user: str = None):
         self.token = token
         self.Group = Groups(self.token)
         self.default_user = default_user
+        self.Teams = Teams()
 
     def push(self, message: str, user: str = None,
              title: str = None,
