@@ -56,10 +56,10 @@ pushover.push(message='Hello World!', title='PushoverKit', attachment='image.png
 ### 👥 Manage Groups
 ```python
 # Create a group
-pushover.Group.create(name="My Team")
+pushover.Groups.create(name="My Team")
 
 # Add a user
-pushover.Group.add_user(group_key="GROUP_KEY", user="USER_KEY", memo="New teammate")
+pushover.Groups.add_user(group_key="GROUP_KEY", user="USER_KEY", memo="New teammate")
 
 # And more methods
 ```
@@ -94,10 +94,10 @@ pushoverkit push --token YOUR_TOKEN --user USER_KEY --message "Hello World!" --t
 ### 🔹 Manage Groups
 ```shell
 # Create a group
-pushoverkit group create --token YOUR_TOKEN --name "My Group"
+pushoverkit groups create --token YOUR_TOKEN --name "My Group"
 
 # Add a user to the group
-pushoverkit group add-user --token YOUR_TOKEN --group-key GROUP_KEY --user USER_KEY --memo "New teammate"
+pushoverkit groups add-user --token YOUR_TOKEN --group-key GROUP_KEY --user USER_KEY --memo "New teammate"
 
 # And more commands
 ```
@@ -105,8 +105,8 @@ pushoverkit group add-user --token YOUR_TOKEN --group-key GROUP_KEY --user USER_
 Each command comes with full help:
 ```shell
 pushoverkit push --help
-pushoverkit group --help
-pushoverkit group create --help
+pushoverkit groups --help
+pushoverkit groups create --help
 
 # And more
 ```

@@ -1,4 +1,4 @@
-from pushoverkit.group import Group
+from pushoverkit.groups import Groups
 
 def setup_group_cli(subparsers):
     parser = subparsers.add_parser("group", help="Manage groups")
@@ -64,33 +64,33 @@ def setup_group_cli(subparsers):
 # Handlers
 
 def handle_create(args):
-    g = Group(token=args.token)
+    g = Groups(token=args.token)
     print(g.create(name=args.name))
 
 def handle_rename(args):
-    g = Group(token=args.token)
+    g = Groups(token=args.token)
     print(g.rename(group_key=args.group_key, name=args.name))
 
 def handle_list_groups(args):
-    g = Group(token=args.token)
+    g = Groups(token=args.token)
     print(g.list_groups())
 
 def handle_list_users(args):
-    g = Group(token=args.token)
+    g = Groups(token=args.token)
     print(g.list_users(group_key=args.group_key))
 
 def handle_add_user(args):
-    g = Group(token=args.token)
+    g = Groups(token=args.token)
     print(g.add_user(group_key=args.group_key, user=args.user, device=args.device, memo=args.memo))
 
 def handle_remove_user(args):
-    g = Group(token=args.token)
+    g = Groups(token=args.token)
     print(g.remove_user(group_key=args.group_key, user=args.user, device=args.device))
 
 def handle_disable_user(args):
-    g = Group(token=args.token)
+    g = Groups(token=args.token)
     print(g.disable_user(group_key=args.group_key, user=args.user, device=args.device))
 
 def handle_enable_user(args):
-    g = Group(token=args.token)
+    g = Groups(token=args.token)
     print(g.enable_user(group_key=args.group_key, user=args.user, device=args.device))

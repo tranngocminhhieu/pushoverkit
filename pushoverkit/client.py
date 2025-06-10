@@ -1,10 +1,10 @@
 import requests
-from .group import Group
+from .groups import Groups
 
 class Pushover:
     def __init__(self, token: str, default_user: str = None):
         self.token = token
-        self.Group = Group(self.token)
+        self.Group = Groups(self.token)
         self.default_user = default_user
 
     def push(self, message: str, user: str = None,

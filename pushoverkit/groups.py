@@ -1,6 +1,6 @@
 import requests
 
-class Group:
+class Groups:
     def __init__(self, token: str):
         self.token = token
         self.base_url = "https://api.pushover.net/1/groups"
