@@ -1,35 +1,32 @@
 # PushoverKit
 **The powerful, Pythonic way to send Pushover notifications — from code or from the command line.**
 
-PushoverKit is a lightweight, intuitive wrapper around the [Pushover API](https://pushover.net/api). It supports **sending messages**, **managing groups**, and comes with a handy **CLI** for quick scripting or automation.
+PushoverKit is a lightweight, intuitive wrapper around the [Pushover API](https://pushover.net/api). It supports **sending messages**, **managing groups**, **managing teams**, and comes with a handy **CLI** for quick scripting or automation.
 
-## 📦 Installation
+## Installation
 
 Install directly from GitHub (latest version):
 ```shell
 pip install git+https://github.com/tranngocminhhieu/pushoverkit.git
 ```
 
-Or from PyPI (when available):
+Or from PyPI:
 ```shell
 pip install pushoverkit
 ```
 
-## 🐍 Python Usage
+## Python Usage
 ```python
 from pushoverkit import Pushover
 
 pushover = Pushover(token='YOUR_TOKEN', default_user='YOUR_USER/GROUP_KEY')
 ```
 
-**Required:**
 - `token`: Your Pushover app token.
-
-**Optional:**
-- `default_user`: Default user key to send the message to.
+- `default_user` (optional): Default user key to push the notification to.
 
 
-### 📨 Push a Message
+### Push a notification
 ```python
 pushover.push(message='Hello World!', title='PushoverKit', attachment='image.png') # Use default_user
 ```
@@ -38,7 +35,7 @@ pushover.push(message='Hello World!', title='PushoverKit', attachment='image.png
 - `message`: Message content.
 
 **Optional:**
-- `user`: User key to send the message to.
+- `user`: User key to send the notification to.
 - `title`: Message title.
 - `device`: Target a specific device.
 - `html`: Enable HTML formatting (1 or 0), default to `0`.
@@ -53,7 +50,7 @@ pushover.push(message='Hello World!', title='PushoverKit', attachment='image.png
 - `attachment_base64`: Base64-encoded attachment data.
 - `attachment_type`: MIME type for the base64 attachment.
 
-### 👥 Manage Groups
+### Manage Groups
 ```python
 # Create a group
 pushover.Groups.create(name="My Team")
@@ -83,7 +80,32 @@ pushover.Groups.add_user(group_key="GROUP_KEY", user="USER_KEY", memo="New teamm
 - `device`: Target a specific device.
 - `memo`: User Name or Memo.
 
-## 🧰 CLI Usage
+### Manage teams
+
+```python
+# Provide team token
+pushover.Teams.team_token = 'TEAM_TOKEN'
+
+# Add a user to the team
+pushover.Teams.add_user(email='abc@gmail.com', name='ABC')
+
+# Remove a user from the team
+pushover.Teams.remove_user(email='abc@gmail.com')
+```
+
+**Required:**
+- `email`: Email of the user to add/remove.
+- `team_token`: Your team's API token.
+
+**Optional:**
+- `name`: Full name of the user.
+- `password`: Set a password.
+- `instant`: Enable Instant Login link.
+- `admin`: Add user as administrator.
+- `group`: Assign user to a specific Delivery Group.
+
+
+## CLI Usage
 PushoverKit includes a built-in CLI for shell lovers and automation fans.
 
 ```shell
@@ -96,18 +118,20 @@ pushoverkit groups create --token YOUR_TOKEN --name "My Group"
 # Add a user to the group
 pushoverkit groups add-user --token YOUR_TOKEN --group-key GROUP_KEY --user USER_KEY --memo "New teammate"
 
-pushoverkit teams add-user --
+# Add a user to the team
+pushoverkit teams add-user --team-token YOUR_TEAM_TOKEN --email "abc@gmail.com"
 
 # And more commands
 ```
-### ℹ️ CLI Help
+
 Each command comes with full help:
 ```shell
+pushoverkit --help
 pushoverkit push --help
 pushoverkit groups --help
 pushoverkit groups create --help
 
-# And more
+# And more commands
 ```
 
 ## ❤️ Why PushoverKit?

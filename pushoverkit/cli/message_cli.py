@@ -11,7 +11,7 @@ def setup_message_cli(subparsers):
     # Optional arguments
     parser.add_argument("--title", help="Message title")
     parser.add_argument("--device", "-d", help="Target a specific device")
-    parser.add_argument("--html", "-h", type=int, choices=[0, 1], default=0, help="Enable HTML formatting (1 or 0)")
+    parser.add_argument("--html", type=int, choices=[0, 1], default=0, help="Enable HTML formatting (1 or 0)")
     parser.add_argument("--monospace", type=int, choices=[0, 1], default=0, help="Enable monospace font (1 or 0)")
     parser.add_argument("--priority", "-p", type=int, choices=[-2, -1, 0, 1, 2], default=0, help="Message priority")
     parser.add_argument("--sound", "-s", help="Override default notification sound")
