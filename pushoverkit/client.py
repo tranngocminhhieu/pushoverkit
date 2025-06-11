@@ -73,8 +73,7 @@ class Pushover:
 
         files = {}
         if attachment:
-            with open(attachment, "rb") as f:
-                files["attachment"] = f
+            files["attachment"] = open(attachment, "rb")
 
         if attachment_base64:
             data["attachment_base64"] = attachment_base64
