@@ -6,59 +6,59 @@ def setup_groups_cli(subparsers):
 
     # create
     create = group_subparsers.add_parser("create", help="Create a new group")
-    create.add_argument("--token", required=True)
-    create.add_argument("--name", required=True)
+    create.add_argument("--token", "-t", required=True)
+    create.add_argument("--name", "-n", required=True)
     create.set_defaults(func=handle_create)
 
     # rename
     rename = group_subparsers.add_parser("rename", help="Rename a group")
-    rename.add_argument("--token", required=True)
-    rename.add_argument("--group-key", required=True)
-    rename.add_argument("--name", required=True)
+    rename.add_argument("--token", "-t", required=True)
+    rename.add_argument("--group-key", "-g", required=True)
+    rename.add_argument("--name", "-n", required=True)
     rename.set_defaults(func=handle_rename)
 
     # list-groups
     list_groups = group_subparsers.add_parser("list-groups", help="List all groups")
-    list_groups.add_argument("--token", required=True)
+    list_groups.add_argument("--token", "-t", required=True)
     list_groups.set_defaults(func=handle_list_groups)
 
     # list-users
     list_users = group_subparsers.add_parser("list-users", help="List users in a group")
-    list_users.add_argument("--token", required=True)
-    list_users.add_argument("--group-key", required=True)
+    list_users.add_argument("--token", "-t", required=True)
+    list_users.add_argument("--group-key", "-g", required=True)
     list_users.set_defaults(func=handle_list_users)
 
     # add-user
     add_user = group_subparsers.add_parser("add-user", help="Add user to group")
-    add_user.add_argument("--token", required=True)
-    add_user.add_argument("--group-key", required=True)
-    add_user.add_argument("--user", required=True)
-    add_user.add_argument("--device")
-    add_user.add_argument("--memo")
+    add_user.add_argument("--token", "-t", required=True)
+    add_user.add_argument("--group-key", "-g", required=True)
+    add_user.add_argument("--user", "-u", required=True)
+    add_user.add_argument("--device", "-d")
+    add_user.add_argument("--memo", "-m")
     add_user.set_defaults(func=handle_add_user)
 
     # remove-user
     remove_user = group_subparsers.add_parser("remove-user", help="Remove user from group")
-    remove_user.add_argument("--token", required=True)
-    remove_user.add_argument("--group-key", required=True)
-    remove_user.add_argument("--user", required=True)
-    remove_user.add_argument("--device")
+    remove_user.add_argument("--token", "-t", required=True)
+    remove_user.add_argument("--group-key", "-g", required=True)
+    remove_user.add_argument("--user", "-u", required=True)
+    remove_user.add_argument("--device", "-d")
     remove_user.set_defaults(func=handle_remove_user)
 
     # disable-user
     disable_user = group_subparsers.add_parser("disable-user", help="Disable user in group")
-    disable_user.add_argument("--token", required=True)
-    disable_user.add_argument("--group-key", required=True)
-    disable_user.add_argument("--user", required=True)
-    disable_user.add_argument("--device")
+    disable_user.add_argument("--token", "-t", required=True)
+    disable_user.add_argument("--group-key", "-g", required=True)
+    disable_user.add_argument("--user", "-u", required=True)
+    disable_user.add_argument("--device", "-d")
     disable_user.set_defaults(func=handle_disable_user)
 
     # enable-user
     enable_user = group_subparsers.add_parser("enable-user", help="Enable user in group")
-    enable_user.add_argument("--token", required=True)
-    enable_user.add_argument("--group-key", required=True)
-    enable_user.add_argument("--user", required=True)
-    enable_user.add_argument("--device")
+    enable_user.add_argument("--token", "-t", required=True)
+    enable_user.add_argument("--group-key", "-g", required=True)
+    enable_user.add_argument("--user", "-u", required=True)
+    enable_user.add_argument("--device", "-d")
     enable_user.set_defaults(func=handle_enable_user)
 
 # Handlers

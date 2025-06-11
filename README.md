@@ -86,18 +86,17 @@ pushover.Groups.add_user(group_key="GROUP_KEY", user="USER_KEY", memo="New teamm
 ## 🧰 CLI Usage
 PushoverKit includes a built-in CLI for shell lovers and automation fans.
 
-### 🔹 Send a Message
 ```shell
+# Push a notification
 pushoverkit push --token YOUR_TOKEN --user USER_KEY --message "Hello World!" --title "PushoverKit" --attachment "image.png"
-```
 
-### 🔹 Manage Groups
-```shell
 # Create a group
 pushoverkit groups create --token YOUR_TOKEN --name "My Group"
 
 # Add a user to the group
 pushoverkit groups add-user --token YOUR_TOKEN --group-key GROUP_KEY --user USER_KEY --memo "New teammate"
+
+pushoverkit teams add-user --
 
 # And more commands
 ```
